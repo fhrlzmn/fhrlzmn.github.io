@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar-fixed {
+  @apply fixed z-50 bg-light dark:bg-dark md:bg-opacity-80 md:backdrop-blur-lg drop-shadow-md;
+}
+
+.hamburger-line {
+  @apply w-[20px] h-[2px] block m-1 transition-all duration-300 ease-in-out;
+}
+
+.hamburger-active > :nth-child(1) {
+  @apply origin-top-left rotate-[40deg];
+}
+
+.hamburger-active > :nth-child(2) {
+  @apply w-0;
+}
+
+.hamburger-active > :nth-child(3) {
+  @apply origin-bottom-left -rotate-[40deg];
+}
+
+#toggle-dark:checked ~ label div.toggle-circle {
+  @apply translate-x-4;
+}

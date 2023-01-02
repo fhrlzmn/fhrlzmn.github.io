@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="../dist/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="../dist/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body class="bg-light dark:bg-dark">
+    <!-- Header -->
+    <header id="header" class="absolute bg-transparent top-0 w-full mx-auto">
+      <div class="container mx-auto">
+        <div
+          class="flex items-center justify-between relative py-3 px-3 md:mx-28"
+        >
+          <div class="logo">
+            <a href="#" class="text-2xl md:text-3xl font-semibold text-primary"
+              >Fhrlzmn</a
+            >
+          </div>
+          <div class="hamburger-menu flex items-center">
+            <button
+              id="hamburger"
+              name="hamburger"
+              type="button"
+              class="block md:hidden"
+            >
+              <span class="hamburger-line bg-dark dark:bg-light"></span>
+              <span class="hamburger-line bg-dark dark:bg-light"></span>
+              <span class="hamburger-line bg-dark dark:bg-light"></span>
+            </button>
+
+            <nav
+              id="nav-menu"
+              class="hidden md:h-full absolute md:static md:flex bg-light dark:bg-dark md:bg-transparent drop-shadow-md rounded-lg overflow-hidden left-4 right-4 mx-auto top-16 md:opacity-100 z-[60]"
+            >
+              <ul
+                class="flex flex-col md:flex-row items-center gap-4 gap-x-9 text-lg font-medium bg-inherit text-dark dark:text-light py-6"
+              >
+                <li class="group">
+                  <a href="#home" class="md:opacity-70 group-hover:opacity-100"
+                    >Home</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="#things"
+                    class="md:opacity-70 group-hover:opacity-100"
+                    >Things</a
+                  >
+                </li>
+                <li class="group">
+                  <a href="http://www.github.com/fhrlzmn" target="_blank">
+                    <svg
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="fill-dark dark:fill-light w-6 md:opacity-70 hover:opacity-100"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M12 2C6.475 2 2 6.475 2 12C2 16.425 4.8625 20.1625 8.8375 21.4875C9.3375 21.575 9.525 21.275 9.525 21.0125C9.525 20.775 9.5125 19.9875 9.5125 19.15C7 19.6125 6.35 18.5375 6.15 17.975C6.0375 17.6875 5.55 16.8 5.125 16.5625C4.775 16.375 4.275 15.9125 5.1125 15.9C5.9 15.8875 6.4625 16.625 6.65 16.925C7.55 18.4375 8.9875 18.0125 9.5625 17.75C9.65 17.1 9.9125 16.6625 10.2 16.4125C7.975 16.1625 5.65 15.3 5.65 11.475C5.65 10.3875 6.0375 9.4875 6.675 8.7875C6.575 8.5375 6.225 7.5125 6.775 6.1375C6.775 6.1375 7.6125 5.875 9.525 7.1625C10.325 6.9375 11.175 6.825 12.025 6.825C12.875 6.825 13.725 6.9375 14.525 7.1625C16.4375 5.8625 17.275 6.1375 17.275 6.1375C17.825 7.5125 17.475 8.5375 17.375 8.7875C18.0125 9.4875 18.4 10.375 18.4 11.475C18.4 15.3125 16.0625 16.1625 13.8375 16.4125C14.2 16.725 14.5125 17.325 14.5125 18.2625C14.5125 19.6 14.5 20.675 14.5 21.0125C14.5 21.275 14.6875 21.5875 15.1875 21.4875C17.1727 20.8173 18.8977 19.5415 20.1198 17.8395C21.3419 16.1376 21.9995 14.0953 22 12C22 6.475 17.525 2 12 2Z"
+                        ></path>
+                      </g>
+                    </svg>
+                  </a>
+                </li>
+                <li class="group absolute md:static right-4 top-4">
+                  <div class="flex">
+                    <input
+                      type="checkbox"
+                      name="toggle-dark"
+                      id="toggle-dark"
+                      class="hidden"
+                    />
+                    <label for="toggle-dark">
+                      <div
+                        class="toggle-bg flex h-6 w-10 bg-dark dark:bg-light rounded-full cursor-pointer items-center px-1 md:bg-opacity-70 md:dark:bg-opacity-70 group-hover:bg-opacity-100"
+                      >
+                        <div
+                          class="toggle-circle h-4 w-4 bg-light dark:bg-dark rounded-full transition-all duration-300 ease-in-out"
+                        >
+                          <svg
+                            id="moon-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-full p-[2px] fill-dark hidden"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"
+                            ></path>
+                          </svg>
+                          <svg
+                            id="sun-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-full p-[2px] fill-yellow-400 hidden"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="pt-32 md:pt-24">
+      <div class="container mx-auto">
+        <div class="flex flex-wrap md:mx-28">
+          <div
+            class="w-full mx-auto md:flex-1 md:basis-3/5 px-8 md:px-10 md:self-center"
+          >
+            <h1
+              class="text-xl md:text-3xl xl:text-4xl text-primary font-medium md:my-4"
+            >
+              Hello!
+              <span
+                class="block font-bold text-3xl md:text-5xl text-dark dark:text-light md:mt-4"
+                >I'm Fahrul Zaman</span
+              >
+            </h1>
+            <h2
+              class="text-dark dark:text-light opacity-90 text-base md:text-xl md:mt-7"
+            >
+              Student
+            </h2>
+          </div>
+
+          <div class="w-full mx-auto md:flex-1 md:basis-2/5 px-8">
+            <div class="mx-auto">
+              <img
+                src="../dist/img/fhrlzmn.webp"
+                alt="profile-pictures"
+                width="300px"
+                class="max-w-full mx-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Hero -->
+
+    <!-- Things -->
+    <section id="things" class="mt-60 pt-28">
+      <div class="container mx-auto">
+        <div class="w-full text-center my-10">
+          <h1
+            class="text-3xl md:text-3xl xl:text-4xl text-primary font-semibold md:my-2"
+          >
+            Things
+          </h1>
+          <h2
+            class="md:px-20 text-dark dark:text-light opacity-90 text-base md:text-xl"
+          >
+            that I love to do
+          </h2>
+        </div>
+        <div
+          class="flex flex-wrap flex-col md:flex-row justify-around gap-5 md:gap-12 md:mx-28 mx-10"
+        >
+          <div class="flex-1">
+            <span class="flex justify-center my-2">
+              <svg
+                viewBox="0 0 24 24"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                fill="#000000"
+                width="80px"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+                  <title>ic_fluent_board_24_regular</title>
+                  <desc>Created with Sketch.</desc>
+                  <g
+                    id="🔍-Product-Icons"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <g
+                      id="ic_fluent_board_24_regular"
+                      fill="#0ea5e9"
+                      fill-rule="nonzero"
+                    >
+                      <path
+                        d="M18.2513521,2.49820514 C19.9843968,2.49820514 21.4006513,3.85452629 21.4962634,5.56367469 L21.5014083,5.74810161 L21.5008077,17.7519229 C21.5005988,19.5467519 20.0455893,21.0018356 18.2507042,21.0018356 L6.25005624,21.0018356 C4.51701151,21.0018356 3.10075697,19.6455145 3.00514494,17.9363661 L3,17.7519391 L3.00060063,5.74811784 C3.00080955,3.9532889 4.45581897,2.49820514 6.25064792,2.49820514 L18.2513521,2.49820514 Z M11.5,9.49820514 L4.5,9.49920514 L4.50010353,17.7518667 L4.50727563,17.9125936 C4.58838653,18.803788 5.33765319,19.5018356 6.25,19.5018356 L11.5,19.5012051 L11.5,9.49820514 Z M20,15.4982051 L13,15.4992051 L13,19.5012051 L18.2506479,19.5018356 C19.2171619,19.5018356 20.0006952,18.7182622 20.0008077,17.7518046 L20,15.4982051 Z M18.2514083,3.99820514 L13,3.99720514 L13,13.9992051 L20,13.9982051 L20.0013048,5.74817408 L19.9941327,5.58744715 C19.9130218,4.69625278 19.1637551,3.99820514 18.2514083,3.99820514 Z M11.5,3.99720514 L6.25073228,3.99820514 L6.10723072,4.00401666 C5.20785168,4.0770851 4.5007075,4.83010139 4.50060063,5.7482362 L4.5,7.99920514 L11.5,7.99820514 L11.5,3.99720514 Z"
+                        id="🎨-Color"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </span>
+            <h2
+              class="text-2xl text-center text-dark dark:text-light font-medium mb-2"
+            >
+              Design
+            </h2>
+            <p class="text-md text-center text-dark dark:text-light font-light opacity-90">
+              I love making designs, especially websites, banners, and logos.
+            </p>
+          </div>
+          <div class="flex-1">
+            <span class="flex justify-center my-2">
+              <svg
+                viewBox="0 0 24 24"
+                width="80px"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+                  <title>ic_fluent_web_asset_24_regular</title>
+                  <desc>Created with Sketch.</desc>
+                  <g
+                    id="🔍-Product-Icons"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <g
+                      id="ic_fluent_web_asset_24_regular"
+                      fill="#0ea5e9"
+                      fill-rule="nonzero"
+                    >
+                      <path
+                        d="M18.75,3 C20.5449254,3 22,4.45507456 22,6.25 L22,17.75 C22,19.5449254 20.5449254,21 18.75,21 L5.25,21 C3.45507456,21 2,19.5449254 2,17.75 L2,6.25 C2,4.45507456 3.45507456,3 5.25,3 L18.75,3 Z M18.75,4.5 L5.25,4.5 C4.28350169,4.5 3.5,5.28350169 3.5,6.25 L3.5,17.75 C3.5,18.7164983 4.28350169,19.5 5.25,19.5 L18.75,19.5 C19.7164983,19.5 20.5,18.7164983 20.5,17.75 L20.5,6.25 C20.5,5.28350169 19.7164983,4.5 18.75,4.5 Z M6.74835407,6.5 L17.2543007,6.5 C17.6685143,6.5 18.0043007,6.83578644 18.0043007,7.25 C18.0043007,7.62969577 17.7221468,7.94349096 17.3560713,7.99315338 L17.2543007,8 L6.74835407,8 C6.33414051,8 5.99835407,7.66421356 5.99835407,7.25 C5.99835407,6.87030423 6.28050795,6.55650904 6.64658351,6.50684662 L6.74835407,6.5 L17.2543007,6.5 L6.74835407,6.5 Z"
+                        id="🎨Color"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </span>
+            <h2
+              class="text-2xl text-center text-dark dark:text-light font-medium mb-2"
+            >
+              Web Development
+            </h2>
+            <p class="text-md text-center text-dark dark:text-light font-light opacity-90">
+              I do Front End Web Developing and currently learn ReactJS.
+            </p>
+          </div>
+          <div class="flex-1">
+            <span class="flex justify-center my-2">
+              <svg
+                viewBox="0 0 24 24"
+                width="80px"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="#000000"
+                stroke-width="0.00024000000000000003"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    clip-rule="evenodd"
+                    d="m10.8028 3.25h-.0227c-.1701-.00001-.2874-.00002-.4008.00683-1.09256.06603-2.10177.60614-2.76277 1.4786-.06859.09054-.13364.18812-.228.3297l-.01257.01884-.2265.33975c-.34414.51621-.9235.82628-1.54391.82628-1.85322 0-3.35555 1.50233-3.35555 3.35555v4.59445.0321c-.00001.8128-.00001 1.4685.04336 1.9994.04467.5466.13902 1.0267.36537 1.471.35952.7056.9332 1.2792 1.63881 1.6388.44421.2263.92435.3207 1.47099.3653.53091.0434 1.18651.0434 1.99935.0434h.03212 8.4.0321c.8129 0 1.4685 0 1.9994-.0434.5466-.0446 1.0267-.139 1.471-.3653.7056-.3596 1.2792-.9332 1.6388-1.6388.2263-.4443.3207-.9244.3653-1.471.0434-.5309.0434-1.1865.0434-1.9994v-.0321-4.59445c0-1.85322-1.5023-3.35555-3.3556-3.35555-.6204 0-1.1997-.31007-1.5439-.82628l-.2265-.33975-.0125-.01881-.0001-.00009c-.0943-.14154-.1593-.23911-.2279-.32964-.661-.87246-1.6702-1.41257-2.7628-1.4786-.1134-.00685-.2307-.00684-.4008-.00683h-.0227zm-.333 1.5041c.0625-.00378.1318-.0041.333-.0041h2.3944c.2012 0 .2705.00032.333.0041.6555.03962 1.2611.36368 1.6577.88716.0378.04988.0765.10735.1881.27476l.2265.33975c.6223.93351 1.67 1.49423 2.7919 1.49423 1.0248 0 1.8556.83076 1.8556 1.85555v4.59445c0 .8525-.0006 1.4467-.0384 1.9093-.0371.4539-.1062.7147-.2068.9122-.2158.4233-.56.7675-.9833.9833-.1975.1006-.4583.1697-.9122.2068-.4626.0378-1.0568.0384-1.9093.0384h-8.4c-.85246 0-1.44669-.0006-1.90932-.0384-.45388-.0371-.71464-.1062-.91216-.2068-.42336-.2158-.76757-.56-.98328-.9833-.10064-.1975-.16978-.4583-.20686-.9122-.0378-.4626-.03838-1.0568-.03838-1.9093v-4.59445c0-1.02479.83076-1.85555 1.85555-1.85555 1.12194 0 2.16965-.56072 2.79199-1.49423l.2265-.33975c.11161-.16741.15031-.22488.1881-.27476.3966-.52348 1.00212-.84754 1.65766-.88716zm-1.2198 7.7459c0-1.5188 1.2312-2.75 2.75-2.75s2.75 1.2312 2.75 2.75-1.2312 2.75-2.75 2.75-2.75-1.2312-2.75-2.75zm2.75-4.25c-2.34721 0-4.25 1.9028-4.25 4.25s1.90279 4.25 4.25 4.25c2.3472 0 4.25-1.9028 4.25-4.25s-1.9028-4.25-4.25-4.25z"
+                    fill="#0ea5e9"
+                    fill-rule="evenodd"
+                  ></path>
+                </g>
+              </svg>
+            </span>
+            <h2
+              class="text-2xl text-center text-dark dark:text-light font-medium mb-2"
+            >
+              Photography
+            </h2>
+            <p class="text-md text-center text-dark dark:text-light font-light opacity-90">
+              And also do photography with my Canon 700D as a hobby.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Things -->
+
+    <!-- Footer -->
+    <footer class="mt-24">
+      <div class="container mx-auto">
+        <ul class="flex mx-auto justify-center gap-3">
+          <li>
+            <a href="http://www.instagram.com/fhrlzmn_" target="_blank">
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                class="fill-dark dark:fill-light w-7 opacity-80 hover:opacity-100"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 2C9.284 2 8.944 2.01133 7.87733 2.06C6.81267 2.10867 6.08533 2.278 5.44933 2.52533C4.78267 2.776 4.178 3.16933 3.678 3.67867C3.16948 4.17809 2.77591 4.78233 2.52467 5.44933C2.27867 6.08533 2.10867 6.81333 2.06 7.878C2.012 8.944 2 9.28333 2 12C2 14.7167 2.01133 15.056 2.06 16.1227C2.10867 17.1873 2.278 17.9147 2.52533 18.5507C2.776 19.2173 3.16933 19.822 3.67867 20.322C4.1781 20.8305 4.78234 21.2241 5.44933 21.4753C6.08533 21.722 6.81267 21.8913 7.87733 21.94C8.944 21.9887 9.284 22 12 22C14.716 22 15.056 21.9887 16.1227 21.94C17.1873 21.8913 17.9147 21.722 18.5507 21.4747C19.2173 21.224 19.822 20.8307 20.322 20.3213C20.8305 19.8219 21.2241 19.2177 21.4753 18.5507C21.722 17.9147 21.8913 17.1873 21.94 16.1227C21.9887 15.056 22 14.716 22 12C22 9.284 21.9887 8.944 21.94 7.87733C21.8913 6.81267 21.722 6.08533 21.4747 5.44933C21.2236 4.78204 20.83 4.17755 20.3213 3.678C19.8219 3.16948 19.2177 2.77591 18.5507 2.52467C17.9147 2.27867 17.1867 2.10867 16.122 2.06C15.056 2.012 14.7167 2 12 2ZM12 3.802C14.67 3.802 14.9867 3.812 16.0413 3.86C17.016 3.90467 17.5453 4.06667 17.898 4.20467C18.3647 4.38533 18.698 4.60267 19.048 4.952C19.398 5.302 19.6147 5.63533 19.7953 6.102C19.9327 6.45467 20.0953 6.984 20.14 7.95867C20.188 9.01333 20.198 9.33 20.198 12C20.198 14.67 20.188 14.9867 20.14 16.0413C20.0953 17.016 19.9333 17.5453 19.7953 17.898C19.6353 18.3324 19.3799 18.7253 19.048 19.048C18.7254 19.38 18.3324 19.6354 17.898 19.7953C17.5453 19.9327 17.016 20.0953 16.0413 20.14C14.9867 20.188 14.6707 20.198 12 20.198C9.32933 20.198 9.01333 20.188 7.95867 20.14C6.984 20.0953 6.45467 19.9333 6.102 19.7953C5.66764 19.6353 5.27467 19.3799 4.952 19.048C4.62012 18.7253 4.36475 18.3323 4.20467 17.898C4.06733 17.5453 3.90467 17.016 3.86 16.0413C3.812 14.9867 3.802 14.67 3.802 12C3.802 9.33 3.812 9.01333 3.86 7.95867C3.90467 6.984 4.06667 6.45467 4.20467 6.102C4.38533 5.63533 4.60267 5.302 4.952 4.952C5.27463 4.62003 5.66761 4.36465 6.102 4.20467C6.45467 4.06733 6.984 3.90467 7.95867 3.86C9.01333 3.812 9.33 3.802 12 3.802Z"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 15.3367C11.5618 15.3367 11.128 15.2504 10.7231 15.0827C10.3183 14.915 9.95047 14.6692 9.64064 14.3594C9.3308 14.0495 9.08502 13.6817 8.91734 13.2769C8.74965 12.8721 8.66335 12.4382 8.66335 12C8.66335 11.5618 8.74965 11.1279 8.91734 10.7231C9.08502 10.3183 9.3308 9.95046 9.64064 9.64062C9.95047 9.33078 10.3183 9.08501 10.7231 8.91732C11.128 8.74964 11.5618 8.66333 12 8.66333C12.885 8.66333 13.7336 9.01487 14.3594 9.64062C14.9851 10.2664 15.3367 11.1151 15.3367 12C15.3367 12.8849 14.9851 13.7336 14.3594 14.3594C13.7336 14.9851 12.885 15.3367 12 15.3367ZM12 6.86C10.6368 6.86 9.32942 7.40153 8.36549 8.36547C7.40155 9.32941 6.86002 10.6368 6.86002 12C6.86002 13.3632 7.40155 14.6706 8.36549 15.6345C9.32942 16.5985 10.6368 17.14 12 17.14C13.3632 17.14 14.6706 16.5985 15.6345 15.6345C16.5985 14.6706 17.14 13.3632 17.14 12C17.14 10.6368 16.5985 9.32941 15.6345 8.36547C14.6706 7.40153 13.3632 6.86 12 6.86ZM18.6353 6.76667C18.6353 7.0889 18.5073 7.39794 18.2795 7.6258C18.0516 7.85366 17.7426 7.98167 17.4204 7.98167C17.0981 7.98167 16.7891 7.85366 16.5612 7.6258C16.3334 7.39794 16.2053 7.0889 16.2053 6.76667C16.2053 6.44443 16.3334 6.13539 16.5612 5.90753C16.7891 5.67968 17.0981 5.55167 17.4204 5.55167C17.7426 5.55167 18.0516 5.67968 18.2795 5.90753C18.5073 6.13539 18.6353 6.44443 18.6353 6.76667Z"
+                  ></path>
+                </g>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="http://www.github.com/fhrlzmn" target="_blank">
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                class="fill-dark dark:fill-light w-7 opacity-80 hover:opacity-100"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 2C6.475 2 2 6.475 2 12C2 16.425 4.8625 20.1625 8.8375 21.4875C9.3375 21.575 9.525 21.275 9.525 21.0125C9.525 20.775 9.5125 19.9875 9.5125 19.15C7 19.6125 6.35 18.5375 6.15 17.975C6.0375 17.6875 5.55 16.8 5.125 16.5625C4.775 16.375 4.275 15.9125 5.1125 15.9C5.9 15.8875 6.4625 16.625 6.65 16.925C7.55 18.4375 8.9875 18.0125 9.5625 17.75C9.65 17.1 9.9125 16.6625 10.2 16.4125C7.975 16.1625 5.65 15.3 5.65 11.475C5.65 10.3875 6.0375 9.4875 6.675 8.7875C6.575 8.5375 6.225 7.5125 6.775 6.1375C6.775 6.1375 7.6125 5.875 9.525 7.1625C10.325 6.9375 11.175 6.825 12.025 6.825C12.875 6.825 13.725 6.9375 14.525 7.1625C16.4375 5.8625 17.275 6.1375 17.275 6.1375C17.825 7.5125 17.475 8.5375 17.375 8.7875C18.0125 9.4875 18.4 10.375 18.4 11.475C18.4 15.3125 16.0625 16.1625 13.8375 16.4125C14.2 16.725 14.5125 17.325 14.5125 18.2625C14.5125 19.6 14.5 20.675 14.5 21.0125C14.5 21.275 14.6875 21.5875 15.1875 21.4875C17.1727 20.8173 18.8977 19.5415 20.1198 17.8395C21.3419 16.1376 21.9995 14.0953 22 12C22 6.475 17.525 2 12 2Z"
+                  ></path>
+                </g>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="http://www.linkedin.com/in/fhrlzmn" target="_blank">
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                class="fill-dark dark:fill-light w-7 opacity-80 hover:opacity-100"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M22 3.47059V20.5294C22 20.9194 21.8451 21.2935 21.5693 21.5693C21.2935 21.8451 20.9194 22 20.5294 22H3.47059C3.08056 22 2.70651 21.8451 2.43073 21.5693C2.15494 21.2935 2 20.9194 2 20.5294V3.47059C2 3.08056 2.15494 2.70651 2.43073 2.43073C2.70651 2.15494 3.08056 2 3.47059 2H20.5294C20.9194 2 21.2935 2.15494 21.5693 2.43073C21.8451 2.70651 22 3.08056 22 3.47059ZM7.88235 9.64706H4.94118V19.0588H7.88235V9.64706ZM8.14706 6.41177C8.14861 6.18929 8.10632 5.96869 8.02261 5.76255C7.93891 5.55642 7.81542 5.36879 7.65919 5.21039C7.50297 5.05198 7.31708 4.92589 7.11213 4.83933C6.90718 4.75277 6.68718 4.70742 6.46471 4.70588H6.41177C5.95934 4.70588 5.52544 4.88561 5.20552 5.20552C4.88561 5.52544 4.70588 5.95934 4.70588 6.41177C4.70588 6.86419 4.88561 7.29809 5.20552 7.61801C5.52544 7.93792 5.95934 8.11765 6.41177 8.11765C6.63426 8.12312 6.85565 8.0847 7.06328 8.00458C7.27092 7.92447 7.46074 7.80422 7.62189 7.65072C7.78304 7.49722 7.91237 7.31346 8.00248 7.10996C8.09259 6.90646 8.14172 6.6872 8.14706 6.46471V6.41177ZM19.0588 13.3412C19.0588 10.5118 17.2588 9.41177 15.4706 9.41177C14.8851 9.38245 14.3021 9.50715 13.7799 9.77345C13.2576 10.0397 12.8143 10.4383 12.4941 10.9294H12.4118V9.64706H9.64706V19.0588H12.5882V14.0529C12.5457 13.5403 12.7072 13.0315 13.0376 12.6372C13.3681 12.2429 13.8407 11.9949 14.3529 11.9471H14.4647C15.4 11.9471 16.0941 12.5353 16.0941 14.0176V19.0588H19.0353L19.0588 13.3412Z"
+                  ></path>
+                </g>
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+        <h2
+          class="text-center text-base text-dark dark:text-light font-light opacity-80 mt-4 mb-8"
+        >
+          made with ❤ by Fahrul Zaman
+        </h2>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a
+      id="btn-top"
+      href="#"
+      class="fixed flex justify-center items-center bottom-20 right-14 z-[100] bg-primary w-14 h-14 rounded-full drop-shadow-lg"
+    >
+      <span class="h-4 w-4 block rotate-45 border-t-4 border-l-4 mt-2"></span>
+    </a>
+
+    <script src="../dist/script/script.js"></script>
+  </body>
+</html>
